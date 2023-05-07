@@ -26,3 +26,16 @@ public class Enemy : MonoBehaviour
         }
     }
 }
+
+POPIS:
+Tento kód je napsán v jazyce C# pro platformu Unity a týká se třídy Enemy, která slouží k implementaci chování nepřátelských objektů.
+
+Kód obsahuje metodu OnCollisionEnter2D, která se volá v momentě, kdy se dvě fyzikální objekty s kolizními komponentami střetnou.
+
+V první řadě metoda zkontroluje, zda se jedná o střet s objektem typu Bird, což předpokládáme, že je hlavním cílem nepřátel. Pokud tomu tak je, nepřátelský objekt se zničí voláním funkce Destroy a metoda se ukončí pomocí klíčového slova return.
+
+Následně metoda kontroluje, zda došlo ke střetu s jiným nepřátelským objektem. Pokud tomu tak je, metoda se opět ukončí pomocí klíčového slova return.
+
+V posledním kroku metoda kontroluje, zda došlo ke střetu s podložkou, což se ověří pomocí dotazu na normálu kolize v ose Y. Pokud je hodnota menší než -0.5, znamená to, že nepřátelský objekt narazil na podložku shora dolů a také se zničí voláním funkce Destroy.
+
+Celkově tedy kód popisuje chování nepřátelských objektů v herním prostředí Unity, kdy se tyto objekty snaží zničit hráčův objekt typu Bird a přitom se musí vyhýbat ostatním nepřátelským objektům a padajícím překážkám.
