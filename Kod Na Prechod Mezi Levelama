@@ -22,3 +22,21 @@ public class LevelController : MonoBehaviour
        SceneManager.LoadScene(nextLevelName); 
     }
 }
+
+POPIS:
+Tento kód je napsán v programovacím jazyce C# a používá herní engine Unity. Popisuje chování herního levelu, konkrétně kontroluje, kdy jsou všichni nepřátelé zabití a přechází na další level.
+
+První řádek určuje, že jsou potřeba knihovny UnityEngine a UnityEngine.SceneManagement pro práci s herním enginem Unity a pro správu scén v aplikaci.
+
+Další řádek definuje třídu LevelController, která dědí z MonoBehaviour, což je běžný způsob pro definici chování herních objektů v Unity.
+
+Poté následují tři proměnné:
+
+_nextLevelIndex - privátní statická proměnná typu int, která uchovává index následujícího levelu
+_enemies - privátní pole typu Enemy, které uchovává všechny nepřátelské objekty v herní scéně
+OnEnable() - metoda, která se spouští při aktivaci instance LevelControlleru, která inicializuje proměnnou _enemies pomocí metody FindObjectsOfType<Enemy>(), která najde všechny herní objekty typu Enemy.
+Následuje metoda Update(), která se volá každý frame. Metoda iteruje přes všechny objekty typu Enemy v poli _enemies pomocí foreach smyčky. Pokud existuje alespoň jeden nepřítel (tj. objekt typu Enemy), který není zabit, metoda se ukončí a nevykonává žádný další kód.
+
+Pokud jsou všichni nepřátelé zabití, vypíše se zpráva "You killed all enemies" do konzoly pomocí metody Debug.Log(). Dále se inkrementuje proměnná _nextLevelIndex a vytvoří se název následujícího levelu s pomocí řetězcového spojení "Level" a čísla indexu. Nakonec se použije metoda SceneManager.LoadScene(), aby se načetla následující scéna (level) s daným názvem.
+
+Celkově lze říci, že tento kód implementuje chování herního levelu v Unity, který po zabití všech nepřátel automaticky přechází na další level.
