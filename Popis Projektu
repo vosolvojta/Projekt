@@ -1,0 +1,5 @@
+Hra ve které uživatel má zacíl vystřelit ptáka na nepřátelské monstra a zabít je buďto dotknutím s ptákem nebo překážkou.pr
+Po zabití všech monster se automaticky přepne na další level.
+V Unity stačí na designovat další level a uložit ho a program ho automaticky přidá.
+Při vytváření hry jsem využíval platformu Unity a přes ní hlavně design hry a v ní programoval jednotlivé věci pomocí C-Sharpu.
+Jak hrát hru: budto stáhnout a zpustit 
