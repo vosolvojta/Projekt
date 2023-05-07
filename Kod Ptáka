@@ -58,3 +58,29 @@ public class Bird : MonoBehaviour
         transform.position = new Vector3(newPosition.x, newPosition.y);
     }
 }
+
+POPIS:
+
+Skript je připojen k hernímu objektu, který představuje ptáka ve hře.
+
+Skript začíná definicí tří soukromých proměnných:
+
+_initialPosition: vektor3 představující počáteční pozici ptáka.
+_birdWasLaunched: boolean udávající, zda byl pták hráčem vypuštěn, či nikoli.
+_timeSittingAround: proměnná float sledující, jak dlouho pták po vypuštění stál na místě.
+K dispozici je také veřejná proměnná typu float s názvem _launchPower, kterou lze upravit v editoru Unity a která umožňuje vývojáři nastavit sílu, s jakou je pták vypouštěn.
+
+Metoda Awake() slouží k nastavení proměnné _initialPosition na aktuální pozici ptáka při inicializaci skriptu.
+
+Metoda Update() je volána každý snímek hry a provádí několik úkolů. Nejprve nastaví počáteční pozici řádkového vykreslovače na _initialPosition a koncovou pozici na aktuální pozici ptáka. Tím se vytvoří vizuální reprezentace trajektorie ptáka.
+
+Poté metoda zkontroluje, zda byl pták vypuštěn (_birdWasLaunched je true) a zda je jeho rychlost velmi nízká (GetComponent<Rigidbody2D>().velocity.magnitude <= 0,1). Pokud jsou obě podmínky splněny, zvýší proměnnou _timeSittingAround.
+
+Nakonec metoda zkontroluje, zda pták nezmizel z obrazovky nebo zda se nepohybuje déle než tři sekundy. Pokud je některá z těchto podmínek splněna, metoda zjistí název aktuální scény a znovu ji načte, čímž vlastně restartuje úroveň.
+
+Skript také obsahuje tři vstupní metody pro zpracování vstupu myší:
+
+OnMouseDown(): nastaví barvu ptačího spritu na červenou a zapne vykreslovač čar.
+OnMouseUp(): nastaví barvu spritu ptáka zpět na bílou, vypočítá směr z aktuální pozice ptáka do jeho výchozí pozice, aplikuje sílu v tomto směru na tuhé tělo ptáka (čímž ho přiměje k pohybu), nastaví měřítko gravitace ptáka na 1, označí _birdWasLaunched jako true a vypne vykreslovač čar.
+OnMouseDrag(): aktualizuje polohu ptáka na základě polohy kurzoru myši.
+Celkově tento skript implementuje základní mechaniku pro hráče, který ve hře vypouští ptáka a ovládá jeho trajektorii. Skript také obsahuje základní logiku pro resetování úrovně, pokud pták zmizí z obrazovky nebo je příliš dlouho nehybný.
